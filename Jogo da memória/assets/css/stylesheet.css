@@ -1,0 +1,59 @@
+/*reset de estilos*/
+*{
+    padding: 0cm;
+    margin: 0cm;
+    box-sizing: border-box;
+}
+/*faz com que a body se expanda por toda a tela*/
+body{
+    height: 100vh; /*vh é viewport height, isso significa que ele vai ter todo o tamanho da tela*/
+    display: flex;
+    background-color: darkslategray;   
+}
+/*limita o espaço do jogo (tabuleiro) para 640px*/
+.memory-game{
+    height: 640px;
+    width: 640px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    perspective: 1000px;
+}
+/*posiciona as cartas dentro do espaço do jogo*/
+.card{
+    height: calc(33.333% - 10px);
+    width: calc(25% - 10px);
+    margin: 5px;
+    position: relative;
+    box-shadow: 1px 1px 1px rgba(1,1,1,0.3);
+    cursor:pointer;
+    transform: scale(1);
+    
+    transform-style: preserve-3d; /*não vai deixar as cartas achatarem.*/
+    transition: transform .9s;
+}
+
+.card:active{
+    transform: scale(0.97);
+    transition: transform .3s;
+}
+
+/*posiciona as cartas uma sobre a outra*/
+.card-front,.card-back{
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    background: white;
+    border-radius: 5px;
+    position: absolute;
+    backface-visibility: hidden; /*esconde o verso da carta (a imagem espelhada que normalmente fica quando se gira um elemento*/
+}
+
+/*rotacionar as cartas*/
+.card-front {
+    transform: rotateY(180deg);
+}
+
+.card.flip{
+    transform: rotateY(180deg);
+}
